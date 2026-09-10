@@ -1,0 +1,326 @@
+[
+  {
+    "slug": "party-jollof-rice",
+    "name": "Party Jollof Rice",
+    "tone": "gold",
+    "portions": [
+      {
+        "id": "single",
+        "label": "Single portion",
+        "price": 4500
+      },
+      {
+        "id": "sharing",
+        "label": "Sharing (2–3)",
+        "price": 11000
+      },
+      {
+        "id": "tray",
+        "label": "Small tray (8–10)",
+        "price": 38000
+      }
+    ],
+    "options": [
+      {
+        "id": "protein",
+        "label": "Add protein",
+        "choices": [
+          {
+            "id": "none",
+            "label": "No protein",
+            "price": 0
+          },
+          {
+            "id": "chicken",
+            "label": "Peppered chicken",
+            "price": 3500
+          },
+          {
+            "id": "beef",
+            "label": "Beef",
+            "price": 3000
+          },
+          {
+            "id": "fish",
+            "label": "Grilled fish",
+            "price": 5000
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "egusi-and-pounded-yam",
+    "name": "Egusi & Pounded Yam",
+    "tone": "green",
+    "portions": [
+      {
+        "id": "single",
+        "label": "Single portion",
+        "price": 6500
+      },
+      {
+        "id": "sharing",
+        "label": "Sharing (2–3)",
+        "price": 15000
+      }
+    ],
+    "options": [
+      {
+        "id": "swallow",
+        "label": "Choose your swallow",
+        "choices": [
+          {
+            "id": "pounded-yam",
+            "label": "Pounded yam",
+            "price": 0
+          },
+          {
+            "id": "eba",
+            "label": "Eba",
+            "price": 0
+          },
+          {
+            "id": "semo",
+            "label": "Semo",
+            "price": 0
+          },
+          {
+            "id": "none",
+            "label": "Soup only",
+            "price": -1000
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "peppered-chicken",
+    "name": "Peppered Chicken",
+    "tone": "deep",
+    "portions": [
+      {
+        "id": "quarter",
+        "label": "4 pieces",
+        "price": 5500
+      },
+      {
+        "id": "half",
+        "label": "8 pieces",
+        "price": 10000
+      }
+    ],
+    "options": [
+      {
+        "id": "heat",
+        "label": "Heat level",
+        "choices": [
+          {
+            "id": "mild",
+            "label": "Mild",
+            "price": 0
+          },
+          {
+            "id": "medium",
+            "label": "Medium",
+            "price": 0
+          },
+          {
+            "id": "hot",
+            "label": "Hot",
+            "price": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "small-chops-platter",
+    "name": "Small Chops Platter",
+    "tone": "gold",
+    "portions": [
+      {
+        "id": "box",
+        "label": "Single box",
+        "price": 5000
+      },
+      {
+        "id": "party",
+        "label": "Party pack (10 boxes)",
+        "price": 45000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "ofada-rice-and-ayamase",
+    "name": "Ofada Rice & Ayamase",
+    "tone": "green",
+    "portions": [
+      {
+        "id": "single",
+        "label": "Single portion",
+        "price": 6000
+      },
+      {
+        "id": "sharing",
+        "label": "Sharing (2–3)",
+        "price": 14000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "akara-and-pap",
+    "name": "Akara & Pap",
+    "tone": "cream",
+    "portions": [
+      {
+        "id": "single",
+        "label": "Single portion",
+        "price": 3000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "yam-and-egg-sauce",
+    "name": "Yam & Egg Sauce",
+    "tone": "gold",
+    "portions": [
+      {
+        "id": "single",
+        "label": "Single portion",
+        "price": 3500
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "fried-rice",
+    "name": "Fried Rice",
+    "tone": "green",
+    "portions": [
+      {
+        "id": "single",
+        "label": "Single portion",
+        "price": 4500
+      },
+      {
+        "id": "sharing",
+        "label": "Sharing (2–3)",
+        "price": 11000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "afang-soup",
+    "name": "Afang Soup",
+    "tone": "deep",
+    "portions": [
+      {
+        "id": "single",
+        "label": "Single portion",
+        "price": 7000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "pounded-yam",
+    "name": "Pounded Yam",
+    "tone": "cream",
+    "portions": [
+      {
+        "id": "one",
+        "label": "1 wrap",
+        "price": 1500
+      },
+      {
+        "id": "two",
+        "label": "2 wraps",
+        "price": 2800
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "fried-plantain",
+    "name": "Fried Plantain",
+    "tone": "gold",
+    "portions": [
+      {
+        "id": "side",
+        "label": "Side portion",
+        "price": 1500
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "moi-moi",
+    "name": "Moi Moi",
+    "tone": "green",
+    "portions": [
+      {
+        "id": "one",
+        "label": "1 wrap",
+        "price": 1800
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "chapman",
+    "name": "Chapman",
+    "tone": "deep",
+    "portions": [
+      {
+        "id": "bottle",
+        "label": "50cl bottle",
+        "price": 2000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "zobo",
+    "name": "Zobo",
+    "tone": "gold",
+    "portions": [
+      {
+        "id": "bottle",
+        "label": "50cl bottle",
+        "price": 1500
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "asun",
+    "name": "Asun",
+    "tone": "deep",
+    "portions": [
+      {
+        "id": "portion",
+        "label": "Single portion",
+        "price": 7500
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "weekend-special",
+    "name": "Weekend Special",
+    "tone": "cream",
+    "portions": [
+      {
+        "id": "single",
+        "label": "Single portion",
+        "price": 6500
+      }
+    ],
+    "options": []
+  }
+]
