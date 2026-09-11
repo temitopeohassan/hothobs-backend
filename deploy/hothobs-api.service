@@ -1,0 +1,40 @@
+[Unit]
+Description=Hothobs Cuisines API
+Documentation=https://github.com/temitopeohassan/hothobs-backend
+After=network-online.target
+Wants=network-online.target
+
+# Don't thrash if it's crash-looping on a bad config — back off instead.
+# These belong in [Unit]: systemd only reads the rate limit here, and silently
+# ignores both keys (with an "Unknown key name" warning) if they sit in
+# [Service], which leaves Restart=always looping forever.
+StartLimitIntervalSec=60
+StartLimitBurst=5
+
+[Service]
+Type=simple
+User=hothobs
+Group=hothobs
+
+# This line is what permanently fixes the dotenv problem: src/config.js reads
+# .env from the current working directory, and DATABASE_FILE is relative too.
+WorkingDirectory=/srv/hothobs-backend
+ExecStart=/usr/bin/node src/server.js
+
+Restart=always
+RestartSec=2
+
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=hothobs-api
+
+# Hardening. ReadWritePaths must include the SQLite directory: WAL mode writes
+# hothobs.db plus -wal and -shm sidecar files next to it.
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/srv/hothobs-backend/data
+
+[Install]
+WantedBy=multi-user.target
