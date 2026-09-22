@@ -16,13 +16,15 @@
 import { Router } from 'express'
 import { db } from '../db.js'
 import { route, badRequest, notFound } from '../lib/errors.js'
-import { requireAuth } from '../middleware/auth.js'
+import { optionalAuth } from '../middleware/auth.js'
+import { mayViewOrder } from '../lib/orderToken.js'
 import { verifyTransaction, verifyWebhookSignature, fromKobo } from '../lib/paystack.js'
+import { sendOrderNotification } from '../lib/mail.js'
 
 const router = Router()
 
 const findByReference = db.prepare('SELECT * FROM orders WHERE reference = ?')
-const findForUser = db.prepare('SELECT * FROM orders WHERE reference = ? AND user_id = ?')
+const listItems = db.prepare('SELECT * FROM order_items WHERE order_id = ? ORDER BY id')
 const markPaid = db.prepare(
   `UPDATE orders
       SET payment_status = 'paid', payment_channel = ?, payment_amount = ?,
@@ -69,7 +71,16 @@ function settle(transaction) {
       )
       return findByReference.get(reference)
     }
-    markPaid.run(String(transaction.channel ?? ''), paid, reference)
+    const { changes } = markPaid.run(String(transaction.channel ?? ''), paid, reference)
+    // `changes` is 1 only for the call that flipped the row to paid. The
+    // webhook and the verify call can both settle the same order, so this is
+    // what keeps the kitchen from getting the same order twice.
+    if (changes > 0) {
+      const paidOrder = findByReference.get(reference)
+      // Not awaited: the customer's redirect and Paystack's webhook should
+      // not wait on an SMTP round trip, and sendOrderNotification never throws.
+      void sendOrderNotification(paidOrder, listItems.all(paidOrder.id))
+    }
   } else if (outcome !== 'pending') {
     markUnpaid.run(outcome, reference)
   }
@@ -81,16 +92,21 @@ function settle(transaction) {
  * Called by the site when the customer lands back on /order/complete.
  * The reference in the URL only says which order to ask about — the answer
  * comes from Paystack.
+ *
+ * The caller still has to be entitled to the order: signed in and owning
+ * it, or a guest holding its claim token. Verifying is a write — it can
+ * confirm an order and email the kitchen — so it is not open to anyone who
+ * guesses a reference.
  */
 router.post(
   '/payments/verify',
-  requireAuth,
+  optionalAuth,
   route(async (req, res) => {
     const reference = String(req.body?.reference ?? '').trim()
     if (!reference) throw badRequest('That payment reference is missing.')
 
-    const owned = findForUser.get(reference, req.user.id)
-    if (!owned) throw notFound('We could not find that order on your account.')
+    const owned = findByReference.get(reference)
+    if (!mayViewOrder(req, owned)) throw notFound('We could not find that order.')
 
     // Already settled by the webhook — no need to ask again.
     if (owned.payment_status !== 'pending') {

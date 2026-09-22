@@ -129,20 +129,46 @@ fs.writeFileSync('src/lib/catalogue.data.json', JSON.stringify(m.products.map(p 
 A price that exists in only one of the two files is a bug: the customer sees one
 number and is charged another.
 
-## Checkout requires an account
+## Order notifications
 
-There is no guest checkout. `POST /orders` requires a session, so every order is
-attached to a customer and appears in their order history, and the email on an
-order is always the account's own.
+When Paystack confirms an order was paid — from the webhook or from the
+customer's return to `/order/complete`, whichever lands first — the kitchen is
+emailed the full order: customer, contact details, delivery address, every item
+with its portion, options and notes, and the totals. `src/lib/mail.js` builds
+it; `settle()` in `src/routes/payments.js` sends it on the one call that flips
+the row to `paid`, so an order is never emailed twice.
 
-`orders.user_id` is still nullable, for two reasons: orders placed before this
-rule came in, and `ON DELETE SET NULL` when an account is removed.
+It goes over SMTP through nodemailer. Set `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`,
+`SMTP_PASS` and `ORDER_NOTIFY_EMAIL` — see `.env.example`. For Gmail the password
+must be an App Password. With `SMTP_HOST` empty the server boots normally and
+logs one warning that notifications are off.
 
-If guest checkout is ever wanted again, swap `requireAuth` back to `optionalAuth`
-on that route and restore the email field on the checkout form. Do **not** then
-link old guest orders to a new account by matching email — that would hand one
-customer's address and phone to anyone who registered with their address.
-Linking them safely needs email verification first.
+The email is a notification, not part of the transaction. If sending fails the
+order is still paid, and the failure is logged with the order reference.
+
+## Checkout, signed in or as a guest
+
+`POST /orders` takes either. A signed-in order carries `user_id` and the
+account's own email, and appears in that customer's order history. A guest
+order has `user_id NULL` and the email from the checkout form, which Paystack
+needs for the receipt; a guest must also give a phone number, since there is no
+account to reach them through otherwise.
+
+**How a guest gets back to their order.** They have no session, so the response
+to `POST /orders` carries an `orderToken` — a JWT naming that one reference,
+signed with `JWT_SECRET` and good for three days (`src/lib/orderToken.js`). The
+browser keeps it and sends it back as `X-Order-Token`; `mayViewOrder()` accepts
+it on `GET /orders/:reference` and `POST /payments/verify`, and nowhere else. It
+is a bearer token for a single order: it cannot list orders, and it is refused
+on an order that has a `user_id`. The `use: 'order'` claim is what stops a
+session cookie being replayed as one, since both are signed with the same secret.
+
+`POST /orders` is rate limited per IP and email for guests only
+(`limitGuests`) — signed-in customers have already proved who they are.
+
+Do **not** link a guest order to an account by matching email. That would hand
+one customer's address and phone to anyone who registered with their address.
+Doing it safely needs email verification first.
 
 ## Before launch
 
@@ -153,7 +179,7 @@ Linking them safely needs email verification first.
       the frontend's menu file (see 'Regenerating prices' above).
 - [ ] Go live on Paystack: swap `sk_test_` for the live secret key, point
       `SITE_URL` at the real domain, and set the webhook URL in the dashboard.
-- [ ] Add password reset (needs an email provider).
+- [ ] Add password reset (SMTP is now configured — see 'Order notifications').
 - [ ] Add email verification on registration.
 - [ ] Point `DATABASE_FILE` at a persistent disk, and take backups. Consider
       moving to Postgres if the admin app will read the same data concurrently.

@@ -3,7 +3,9 @@ import crypto from 'node:crypto'
 import { db } from '../db.js'
 import { Check, str } from '../lib/validate.js'
 import { route, badRequest, notFound } from '../lib/errors.js'
-import { requireAuth } from '../middleware/auth.js'
+import { optionalAuth, requireAuth } from '../middleware/auth.js'
+import { issueOrderToken, mayViewOrder } from '../lib/orderToken.js'
+import { throttle } from '../lib/throttle.js'
 import { zones, findZone, paymentMethods, PAYMENT_METHOD } from '../lib/fulfilment.js'
 import { priceLine } from '../lib/catalogue.js'
 import { initializeTransaction } from '../lib/paystack.js'
@@ -28,7 +30,7 @@ const listOrders = db.prepare(
   'SELECT * FROM orders WHERE user_id = ? ORDER BY id DESC LIMIT ? OFFSET ?'
 )
 const countOrders = db.prepare('SELECT COUNT(*) AS n FROM orders WHERE user_id = ?')
-const findOrder = db.prepare('SELECT * FROM orders WHERE reference = ? AND user_id = ?')
+const findOrder = db.prepare('SELECT * FROM orders WHERE reference = ?')
 const findOrderById = db.prepare('SELECT * FROM orders WHERE id = ?')
 const listItems = db.prepare('SELECT * FROM order_items WHERE order_id = ? ORDER BY id')
 const referenceTaken = db.prepare('SELECT 1 FROM orders WHERE reference = ?')
@@ -36,6 +38,18 @@ const referenceTaken = db.prepare('SELECT 1 FROM orders WHERE reference = ?')
 const deleteUnpaidOrder = db.prepare(
   "DELETE FROM orders WHERE id = ? AND payment_status = 'pending' AND paid_at IS NULL"
 )
+
+/**
+ * Guest checkout has no password and no email confirmation behind it, so
+ * cap how many orders one address can start. A signed-in customer skips
+ * this — they already proved who they are and may reorder as they like.
+ */
+const guestOrderLimit = throttle({
+  max: 10,
+  windowMs: 60 * 60 * 1000,
+  message: 'Too many orders started from here without an account.',
+})
+const limitGuests = (req, res, next) => (req.user ? next() : guestOrderLimit(req, res, next))
 
 // No I, O, 0 or 1 — references get read out over the phone.
 const ALPHABET = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'
@@ -98,8 +112,11 @@ router.get('/zones', (_req, res) => res.json({ zones, paymentMethods }))
 /**
  * Place an order and start its payment.
  *
- * Requires an account — checkout has no guest path — so every order is
- * attached to a customer and appears in their order history.
+ * Works signed in or as a guest. A signed-in order is attached to the
+ * account and appears in its history; a guest order has no user_id and the
+ * response carries a claim token instead, which is the only way back to it
+ * (see src/lib/orderToken.js). Either way Paystack needs an email address
+ * to send a receipt to, so a guest has to give one.
  *
  * The order is written as payment_status 'pending' and the response
  * carries a Paystack authorization URL. It is not a confirmed order until
@@ -107,14 +124,26 @@ router.get('/zones', (_req, res) => res.json({ zones, paymentMethods }))
  */
 router.post(
   '/orders',
-  requireAuth,
+  optionalAuth,
+  limitGuests,
   route(async (req, res) => {
     const body = req.body ?? {}
     const check = new Check()
 
+    const guest = !req.user
+
     check.text('name', body.name, { label: 'Full name', min: 2, max: 120 })
-    // Optional at checkout — the account's email is how we reach them otherwise.
-    if (str(body.phone)) check.phone('phone', body.phone)
+    if (guest) {
+      // Paystack sends the receipt here, and it is how we reach a customer
+      // we have no account for.
+      check.email('email', body.email)
+      // Required for a guest: with no account behind the order, a phone
+      // number is how the kitchen agrees timing if the email bounces.
+      check.phone('phone', body.phone)
+    } else if (str(body.phone)) {
+      // Optional at checkout — the account's email is how we reach them otherwise.
+      check.phone('phone', body.phone)
+    }
 
     const zone = findZone(str(body.zone))
     if (!zone) check.add('zone', 'Choose how you would like to receive this order.')
@@ -173,10 +202,10 @@ router.post(
       const reference = newReference()
       const { lastInsertRowid } = insertOrder.run(
         reference,
-        req.user.id,
+        req.user?.id ?? null,
         str(body.name),
         str(body.phone),
-        req.user.email,
+        req.user?.email ?? str(body.email),
         isPickup ? 'pickup' : 'delivery',
         zone.id,
         zone.label,
@@ -245,6 +274,9 @@ router.post(
         authorizationUrl: transaction.authorization_url,
         reference: order.reference,
       },
+      // The guest's only claim on this order. Nothing to hand a customer
+      // whose account already holds it.
+      ...(guest ? { orderToken: issueOrderToken(order.reference) } : {}),
     })
   })
 )
@@ -268,12 +300,17 @@ router.get(
   })
 )
 
+/**
+ * One order, for the account that owns it or the guest holding its token.
+ * Both failures answer the same way, so this cannot be used to find out
+ * which references exist.
+ */
 router.get(
   '/orders/:reference',
-  requireAuth,
+  optionalAuth,
   route(async (req, res) => {
-    const order = findOrder.get(req.params.reference, req.user.id)
-    if (!order) throw notFound('We could not find that order on your account.')
+    const order = findOrder.get(req.params.reference)
+    if (!mayViewOrder(req, order)) throw notFound('We could not find that order.')
     res.json({ order: withItems(order) })
   })
 )

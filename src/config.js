@@ -37,7 +37,13 @@ export const config = {
 
   // Where the customer-facing site lives. Paystack sends people back here
   // after they pay, so it has to be the real public origin in production.
-  siteUrl: (process.env.SITE_URL ?? 'http://localhost:5173').replace(/\/+$/, ''),
+  // In production a missing value must not fall back to localhost: Paystack
+  // would send paying customers to a page that does not exist.
+  siteUrl: (
+    process.env.NODE_ENV === 'production'
+      ? required('SITE_URL')
+      : (process.env.SITE_URL ?? 'http://localhost:5173')
+  ).replace(/\/+$/, ''),
 
   // Paystack is the only payment method. The secret key stays on the
   // server — the browser never sees it and never talks to Paystack's API
@@ -45,6 +51,22 @@ export const config = {
   paystack: {
     secretKey: process.env.PAYSTACK_SECRET_KEY ?? '',
     currency: process.env.PAYSTACK_CURRENCY ?? 'NGN',
+  },
+
+  // Outgoing email, over SMTP. Only used to tell the kitchen about paid
+  // orders; leave SMTP_HOST empty and nothing is sent. See src/lib/mail.js.
+  mail: {
+    host: process.env.SMTP_HOST ?? '',
+    port: Number(process.env.SMTP_PORT ?? 465),
+    user: process.env.SMTP_USER ?? '',
+    pass: process.env.SMTP_PASS ?? '',
+    // Header the kitchen sees the email from. Gmail rewrites it to SMTP_USER.
+    from: process.env.MAIL_FROM || process.env.SMTP_USER || '',
+    // Where new-order notifications go. Comma separated for more than one.
+    orderNotifyTo: (process.env.ORDER_NOTIFY_EMAIL ?? '')
+      .split(',')
+      .map((e) => e.trim())
+      .filter(Boolean),
   },
 }
 
