@@ -124,6 +124,7 @@ const m = await import(pathToFileURL('../hothobs-frontend/src/data/menu.js').hre
 const out = m.products
   .map(p => ({
     slug: p.slug, name: p.name, tone: p.tone,
+    minQty: p.minQty ?? 1, unitNoun: p.unitNoun ?? 'portions',
     portions: p.portions.filter(x => !x.bulk).map(x => ({ id: x.id, label: x.label, price: x.price })),
     options: p.options.map(o => ({ id: o.id, label: o.label,
       choices: o.choices.map(c => ({ id: c.id, label: c.label, price: c.price })) })),

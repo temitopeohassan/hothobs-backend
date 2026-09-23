@@ -9,7 +9,7 @@
       {
         "id": "per-head",
         "label": "Per head",
-        "price": 5000
+        "price": 10000
       }
     ],
     "options": []
@@ -24,7 +24,7 @@
       {
         "id": "per-head",
         "label": "Per head",
-        "price": 7000
+        "price": 15000
       }
     ],
     "options": []
@@ -39,7 +39,7 @@
       {
         "id": "per-head",
         "label": "Per head",
-        "price": 10000
+        "price": 20000
       }
     ],
     "options": []
@@ -331,7 +331,7 @@
   },
   {
     "slug": "edikainkong",
-    "name": "Edikainkong",
+    "name": "Edikaikong",
     "tone": "deep",
     "minQty": 1,
     "unitNoun": "portions",
@@ -991,12 +991,12 @@
       {
         "id": "box",
         "label": "Box (serves 1)",
-        "price": 9000
+        "price": 10000
       },
       {
         "id": "bowl",
         "label": "Bowl (serves 2)",
-        "price": 17000
+        "price": 18000
       }
     ],
     "options": []
@@ -1011,12 +1011,12 @@
       {
         "id": "box",
         "label": "Box (serves 1)",
-        "price": 9000
+        "price": 10000
       },
       {
         "id": "bowl",
         "label": "Bowl (serves 2)",
-        "price": 17000
+        "price": 18000
       }
     ],
     "options": []
@@ -1031,12 +1031,12 @@
       {
         "id": "box",
         "label": "Box (serves 1)",
-        "price": 9000
+        "price": 10000
       },
       {
         "id": "bowl",
         "label": "Bowl (serves 2)",
-        "price": 17000
+        "price": 18000
       }
     ],
     "options": []
@@ -1051,12 +1051,12 @@
       {
         "id": "box",
         "label": "Box (serves 1)",
-        "price": 9000
+        "price": 10000
       },
       {
         "id": "bowl",
         "label": "Bowl (serves 2)",
-        "price": 17000
+        "price": 18000
       }
     ],
     "options": []
@@ -1071,12 +1071,12 @@
       {
         "id": "box",
         "label": "Box (serves 1)",
-        "price": 7500
+        "price": 10000
       },
       {
         "id": "bowl",
         "label": "Bowl (serves 2)",
-        "price": 15000
+        "price": 18000
       }
     ],
     "options": []
@@ -1091,12 +1091,12 @@
       {
         "id": "box",
         "label": "Box (serves 1)",
-        "price": 9000
+        "price": 10000
       },
       {
         "id": "bowl",
         "label": "Bowl (serves 2)",
-        "price": 17000
+        "price": 18000
       }
     ],
     "options": []
@@ -1111,17 +1111,17 @@
       {
         "id": "bowl",
         "label": "Bowl",
-        "price": 8500
+        "price": 10000
       },
       {
         "id": "medium-tray",
         "label": "Medium tray",
-        "price": 35000
+        "price": 45000
       },
       {
         "id": "large-tray",
         "label": "Large tray",
-        "price": 45000
+        "price": 55000
       }
     ],
     "options": []
@@ -1136,17 +1136,17 @@
       {
         "id": "bowl",
         "label": "Bowl",
-        "price": 9000
+        "price": 10000
       },
       {
         "id": "medium-tray",
         "label": "Medium tray",
-        "price": 35500
+        "price": 45000
       },
       {
         "id": "large-tray",
         "label": "Large tray",
-        "price": 45500
+        "price": 55000
       }
     ],
     "options": []
@@ -1161,17 +1161,17 @@
       {
         "id": "bowl",
         "label": "Bowl",
-        "price": 9000
+        "price": 10000
       },
       {
         "id": "medium-tray",
         "label": "Medium tray",
-        "price": 35500
+        "price": 45000
       },
       {
         "id": "large-tray",
         "label": "Large tray",
-        "price": 45500
+        "price": 55000
       }
     ],
     "options": []
