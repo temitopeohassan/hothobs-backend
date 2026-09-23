@@ -1,197 +1,70 @@
 [
   {
-    "slug": "party-jollof-rice",
-    "name": "Party Jollof Rice",
+    "slug": "nigerian-breakfast",
+    "name": "Nigerian Breakfast",
     "tone": "gold",
+    "minQty": 20,
+    "unitNoun": "people",
     "portions": [
       {
-        "id": "single",
-        "label": "Single portion",
-        "price": 4500
-      },
-      {
-        "id": "sharing",
-        "label": "Sharing (2–3)",
-        "price": 11000
-      },
-      {
-        "id": "tray",
-        "label": "Small tray (8–10)",
-        "price": 38000
+        "id": "per-head",
+        "label": "Per head",
+        "price": 5000
       }
     ],
-    "options": [
-      {
-        "id": "protein",
-        "label": "Add protein",
-        "choices": [
-          {
-            "id": "none",
-            "label": "No protein",
-            "price": 0
-          },
-          {
-            "id": "chicken",
-            "label": "Peppered chicken",
-            "price": 3500
-          },
-          {
-            "id": "beef",
-            "label": "Beef",
-            "price": 3000
-          },
-          {
-            "id": "fish",
-            "label": "Grilled fish",
-            "price": 5000
-          }
-        ]
-      }
-    ]
+    "options": []
   },
   {
-    "slug": "egusi-and-pounded-yam",
-    "name": "Egusi & Pounded Yam",
+    "slug": "continental-breakfast",
+    "name": "Continental Breakfast",
+    "tone": "cream",
+    "minQty": 20,
+    "unitNoun": "people",
+    "portions": [
+      {
+        "id": "per-head",
+        "label": "Per head",
+        "price": 7000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "mix-breakfast",
+    "name": "Mix Breakfast",
     "tone": "green",
+    "minQty": 20,
+    "unitNoun": "people",
     "portions": [
       {
-        "id": "single",
-        "label": "Single portion",
-        "price": 6500
-      },
-      {
-        "id": "sharing",
-        "label": "Sharing (2–3)",
-        "price": 15000
-      }
-    ],
-    "options": [
-      {
-        "id": "swallow",
-        "label": "Choose your swallow",
-        "choices": [
-          {
-            "id": "pounded-yam",
-            "label": "Pounded yam",
-            "price": 0
-          },
-          {
-            "id": "eba",
-            "label": "Eba",
-            "price": 0
-          },
-          {
-            "id": "semo",
-            "label": "Semo",
-            "price": 0
-          },
-          {
-            "id": "none",
-            "label": "Soup only",
-            "price": -1000
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "slug": "peppered-chicken",
-    "name": "Peppered Chicken",
-    "tone": "deep",
-    "portions": [
-      {
-        "id": "quarter",
-        "label": "4 pieces",
-        "price": 5500
-      },
-      {
-        "id": "half",
-        "label": "8 pieces",
+        "id": "per-head",
+        "label": "Per head",
         "price": 10000
       }
     ],
-    "options": [
-      {
-        "id": "heat",
-        "label": "Heat level",
-        "choices": [
-          {
-            "id": "mild",
-            "label": "Mild",
-            "price": 0
-          },
-          {
-            "id": "medium",
-            "label": "Medium",
-            "price": 0
-          },
-          {
-            "id": "hot",
-            "label": "Hot",
-            "price": 0
-          }
-        ]
-      }
-    ]
+    "options": []
   },
   {
-    "slug": "small-chops-platter",
-    "name": "Small Chops Platter",
+    "slug": "jollof-rice",
+    "name": "Jollof Rice",
     "tone": "gold",
+    "minQty": 1,
+    "unitNoun": "portions",
     "portions": [
       {
-        "id": "box",
-        "label": "Single box",
-        "price": 5000
-      },
-      {
-        "id": "party",
-        "label": "Party pack (10 boxes)",
+        "id": "3l",
+        "label": "3 litres",
         "price": 45000
-      }
-    ],
-    "options": []
-  },
-  {
-    "slug": "ofada-rice-and-ayamase",
-    "name": "Ofada Rice & Ayamase",
-    "tone": "green",
-    "portions": [
-      {
-        "id": "single",
-        "label": "Single portion",
-        "price": 6000
       },
       {
-        "id": "sharing",
-        "label": "Sharing (2–3)",
-        "price": 14000
-      }
-    ],
-    "options": []
-  },
-  {
-    "slug": "akara-and-pap",
-    "name": "Akara & Pap",
-    "tone": "cream",
-    "portions": [
+        "id": "5l",
+        "label": "5 litres",
+        "price": 75000
+      },
       {
-        "id": "single",
-        "label": "Single portion",
-        "price": 3000
-      }
-    ],
-    "options": []
-  },
-  {
-    "slug": "yam-and-egg-sauce",
-    "name": "Yam & Egg Sauce",
-    "tone": "gold",
-    "portions": [
-      {
-        "id": "single",
-        "label": "Single portion",
-        "price": 3500
+        "id": "tray",
+        "label": "Tray",
+        "price": 75000
       }
     ],
     "options": []
@@ -200,125 +73,1317 @@
     "slug": "fried-rice",
     "name": "Fried Rice",
     "tone": "green",
+    "minQty": 1,
+    "unitNoun": "portions",
     "portions": [
       {
-        "id": "single",
-        "label": "Single portion",
-        "price": 4500
+        "id": "3l",
+        "label": "3 litres",
+        "price": 45000
       },
       {
-        "id": "sharing",
-        "label": "Sharing (2–3)",
-        "price": 11000
-      }
-    ],
-    "options": []
-  },
-  {
-    "slug": "afang-soup",
-    "name": "Afang Soup",
-    "tone": "deep",
-    "portions": [
+        "id": "5l",
+        "label": "5 litres",
+        "price": 75000
+      },
       {
-        "id": "single",
-        "label": "Single portion",
-        "price": 7000
+        "id": "tray",
+        "label": "Tray",
+        "price": 75000
       }
     ],
     "options": []
   },
   {
-    "slug": "pounded-yam",
-    "name": "Pounded Yam",
+    "slug": "chicken-coconut-rice",
+    "name": "Chicken Coconut Rice",
     "tone": "cream",
+    "minQty": 1,
+    "unitNoun": "portions",
     "portions": [
       {
-        "id": "one",
-        "label": "1 wrap",
-        "price": 1500
+        "id": "3l",
+        "label": "3 litres",
+        "price": 66000
       },
       {
-        "id": "two",
-        "label": "2 wraps",
-        "price": 2800
-      }
-    ],
-    "options": []
-  },
-  {
-    "slug": "fried-plantain",
-    "name": "Fried Plantain",
-    "tone": "gold",
-    "portions": [
+        "id": "5l",
+        "label": "5 litres",
+        "price": 110000
+      },
       {
-        "id": "side",
-        "label": "Side portion",
-        "price": 1500
+        "id": "tray",
+        "label": "Tray",
+        "price": 110000
       }
     ],
     "options": []
   },
   {
-    "slug": "moi-moi",
-    "name": "Moi Moi",
-    "tone": "green",
-    "portions": [
-      {
-        "id": "one",
-        "label": "1 wrap",
-        "price": 1800
-      }
-    ],
-    "options": []
-  },
-  {
-    "slug": "chapman",
-    "name": "Chapman",
+    "slug": "seafood-coconut-rice",
+    "name": "Seafood Coconut Rice",
     "tone": "deep",
+    "minQty": 1,
+    "unitNoun": "portions",
     "portions": [
       {
-        "id": "bottle",
-        "label": "50cl bottle",
+        "id": "3l",
+        "label": "3 litres",
+        "price": 75000
+      },
+      {
+        "id": "5l",
+        "label": "5 litres",
+        "price": 125000
+      },
+      {
+        "id": "tray",
+        "label": "Tray",
+        "price": 125000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "seafood-rice",
+    "name": "Seafood Rice",
+    "tone": "gold",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "3l",
+        "label": "3 litres",
+        "price": 75000
+      },
+      {
+        "id": "5l",
+        "label": "5 litres",
+        "price": 125000
+      },
+      {
+        "id": "tray",
+        "label": "Tray",
+        "price": 125000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "asun-rice",
+    "name": "Asun Rice",
+    "tone": "deep",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "3l",
+        "label": "3 litres",
+        "price": 66000
+      },
+      {
+        "id": "5l",
+        "label": "5 litres",
+        "price": 110000
+      },
+      {
+        "id": "tray",
+        "label": "Tray",
+        "price": 110000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "jambalaya-rice",
+    "name": "Jambalaya Rice",
+    "tone": "green",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "3l",
+        "label": "3 litres",
+        "price": 60000
+      },
+      {
+        "id": "5l",
+        "label": "5 litres",
+        "price": 100000
+      },
+      {
+        "id": "tray",
+        "label": "Tray",
+        "price": 100000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "village-rice",
+    "name": "Village Rice",
+    "tone": "cream",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "3l",
+        "label": "3 litres",
+        "price": 75000
+      },
+      {
+        "id": "5l",
+        "label": "5 litres",
+        "price": 140000
+      },
+      {
+        "id": "tray",
+        "label": "Tray",
+        "price": 140000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "asaro-yam-pottage",
+    "name": "Asaro (Yam Pottage)",
+    "tone": "gold",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "3l",
+        "label": "3 litres",
+        "price": 30000
+      },
+      {
+        "id": "5l",
+        "label": "5 litres",
+        "price": 50000
+      },
+      {
+        "id": "tray",
+        "label": "Tray",
+        "price": 50000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "efo-riro",
+    "name": "Efo Riro",
+    "tone": "green",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "3l",
+        "label": "3 litres",
+        "price": 45000
+      },
+      {
+        "id": "5l",
+        "label": "5 litres",
+        "price": 75000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "efo-elegusi",
+    "name": "Efo Elegusi",
+    "tone": "gold",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "3l",
+        "label": "3 litres",
+        "price": 45000
+      },
+      {
+        "id": "5l",
+        "label": "5 litres",
+        "price": 75000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "egusi-ijebu",
+    "name": "Egusi Ijebu",
+    "tone": "cream",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "3l",
+        "label": "3 litres",
+        "price": 45000
+      },
+      {
+        "id": "5l",
+        "label": "5 litres",
+        "price": 75000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "edikainkong",
+    "name": "Edikainkong",
+    "tone": "deep",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "3l",
+        "label": "3 litres",
+        "price": 45000
+      },
+      {
+        "id": "5l",
+        "label": "5 litres",
+        "price": 75000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "afang",
+    "name": "Afang",
+    "tone": "green",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "3l",
+        "label": "3 litres",
+        "price": 45000
+      },
+      {
+        "id": "5l",
+        "label": "5 litres",
+        "price": 75000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "ofada-sauce",
+    "name": "Ofada Sauce",
+    "tone": "gold",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "3l",
+        "label": "3 litres",
+        "price": 45000
+      },
+      {
+        "id": "5l",
+        "label": "5 litres",
+        "price": 75000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "oha-soup",
+    "name": "Oha Soup",
+    "tone": "cream",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "3l",
+        "label": "3 litres",
+        "price": 45000
+      },
+      {
+        "id": "5l",
+        "label": "5 litres",
+        "price": 75000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "ogbono-soup",
+    "name": "Ogbono Soup",
+    "tone": "deep",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "3l",
+        "label": "3 litres",
+        "price": 45000
+      },
+      {
+        "id": "5l",
+        "label": "5 litres",
+        "price": 75000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "seafood-soup",
+    "name": "Seafood Soup",
+    "tone": "green",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "3l",
+        "label": "3 litres",
+        "price": 75000
+      },
+      {
+        "id": "5l",
+        "label": "5 litres",
+        "price": 140000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "assorted-beef-okro",
+    "name": "Assorted Beef Okro",
+    "tone": "gold",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "3l",
+        "label": "3 litres",
+        "price": 45000
+      },
+      {
+        "id": "5l",
+        "label": "5 litres",
+        "price": 75000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "fried-beef-stew",
+    "name": "Fried Beef Stew",
+    "tone": "deep",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "3l",
+        "label": "3 litres",
+        "price": 35000
+      },
+      {
+        "id": "5l",
+        "label": "5 litres",
+        "price": 60000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "fried-chicken-stew",
+    "name": "Fried Chicken Stew",
+    "tone": "cream",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "3l",
+        "label": "3 litres",
+        "price": 55000
+      },
+      {
+        "id": "5l",
+        "label": "5 litres",
+        "price": 100000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "fried-fish-stew",
+    "name": "Fried Fish Stew",
+    "tone": "green",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "3l",
+        "label": "3 litres",
+        "price": 60000
+      },
+      {
+        "id": "5l",
+        "label": "5 litres",
+        "price": 120000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "fish-pepper-soup",
+    "name": "Fish Pepper Soup",
+    "tone": "gold",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "3l",
+        "label": "3 litres",
+        "price": 55000
+      },
+      {
+        "id": "5l",
+        "label": "5 litres",
+        "price": 100000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "goat-meat-pepper-soup",
+    "name": "Goat Meat Pepper Soup",
+    "tone": "deep",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "3l",
+        "label": "3 litres",
+        "price": 60000
+      },
+      {
+        "id": "5l",
+        "label": "5 litres",
+        "price": 110000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "grilled-pepper-turkey",
+    "name": "Grilled Pepper Turkey",
+    "tone": "deep",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "piece",
+        "label": "Per piece",
+        "price": 6000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "grilled-pepper-chicken",
+    "name": "Grilled Pepper Chicken",
+    "tone": "gold",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "piece",
+        "label": "Per piece",
+        "price": 5000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "sauteed-beef-with-pepper",
+    "name": "Sautéed Beef with Pepper",
+    "tone": "green",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "piece",
+        "label": "Per piece",
+        "price": 3000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "sauteed-croaker-fish",
+    "name": "Sautéed Croaker Fish",
+    "tone": "cream",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "piece",
+        "label": "Per piece",
+        "price": 5000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "sauteed-hake-fish",
+    "name": "Sautéed Hake Fish",
+    "tone": "deep",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "piece",
+        "label": "Per piece",
+        "price": 4000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "peppered-snails",
+    "name": "Peppered Snails",
+    "tone": "green",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "piece",
+        "label": "Per piece",
+        "price": 5000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "grilled-prawns-spicy",
+    "name": "Grilled Prawns (Spicy)",
+    "tone": "gold",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "piece",
+        "label": "Per piece",
+        "price": 4500
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "moinmoin",
+    "name": "Moinmoin",
+    "tone": "cream",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "piece",
+        "label": "Per piece",
         "price": 2000
       }
     ],
     "options": []
   },
   {
-    "slug": "zobo",
-    "name": "Zobo",
+    "slug": "gizdodo",
+    "name": "Gizdodo",
     "tone": "gold",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "stick",
+        "label": "Per stick",
+        "price": 2000
+      },
+      {
+        "id": "tray",
+        "label": "Tray (25 sticks)",
+        "price": 45000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "crispy-chicken-wings",
+    "name": "Crispy Chicken Wings",
+    "tone": "deep",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "stick",
+        "label": "Per stick",
+        "price": 1500
+      },
+      {
+        "id": "tray",
+        "label": "Tray (25 sticks)",
+        "price": 30000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "whole-dressed-chicken",
+    "name": "Whole Dressed Chicken",
+    "tone": "green",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "stick",
+        "label": "Per stick",
+        "price": 1200
+      },
+      {
+        "id": "tray",
+        "label": "Tray (25 sticks)",
+        "price": 25000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "chicken-lollipop",
+    "name": "Chicken Lollipop",
+    "tone": "cream",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "stick",
+        "label": "Per stick",
+        "price": 2000
+      },
+      {
+        "id": "tray",
+        "label": "Tray (25 sticks)",
+        "price": 45000
+      }
+    ],
+    "options": [
+      {
+        "id": "style",
+        "label": "Crispy or grilled",
+        "choices": [
+          {
+            "id": "crispy",
+            "label": "Crispy",
+            "price": 0
+          },
+          {
+            "id": "grilled",
+            "label": "Grilled",
+            "price": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "spicy-basil-chilli-meatballs",
+    "name": "Spicy Basil Chilli Meatballs",
+    "tone": "deep",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "tray",
+        "label": "Tray (25 sticks) — from, priced by size",
+        "price": 22500
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "singapore-noodles-chicken",
+    "name": "Singapore Noodles (Chicken)",
+    "tone": "gold",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "500ml",
+        "label": "500ml",
+        "price": 10000
+      },
+      {
+        "id": "1000ml",
+        "label": "1000ml",
+        "price": 18000
+      },
+      {
+        "id": "3-5l",
+        "label": "3.5 litres",
+        "price": 53000
+      },
+      {
+        "id": "tray",
+        "label": "Tray",
+        "price": 70000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "creamy-chicken-pasta-bulk",
+    "name": "Creamy Chicken Pasta (Bulk)",
+    "tone": "cream",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "500ml",
+        "label": "500ml",
+        "price": 10000
+      },
+      {
+        "id": "1000ml",
+        "label": "1000ml",
+        "price": 18000
+      },
+      {
+        "id": "3-5l",
+        "label": "3.5 litres",
+        "price": 53000
+      },
+      {
+        "id": "tray",
+        "label": "Tray",
+        "price": 70000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "tomato-chicken-pasta-bulk",
+    "name": "Tomato Chicken Pasta (Bulk)",
+    "tone": "green",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "500ml",
+        "label": "500ml",
+        "price": 10000
+      },
+      {
+        "id": "1000ml",
+        "label": "1000ml",
+        "price": 18000
+      },
+      {
+        "id": "3-5l",
+        "label": "3.5 litres",
+        "price": 53000
+      },
+      {
+        "id": "tray",
+        "label": "Tray",
+        "price": 70000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "creamy-seafood-pasta-bulk",
+    "name": "Creamy Seafood Pasta (Bulk)",
+    "tone": "deep",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "500ml",
+        "label": "500ml",
+        "price": 10000
+      },
+      {
+        "id": "1000ml",
+        "label": "1000ml",
+        "price": 18000
+      },
+      {
+        "id": "3-5l",
+        "label": "3.5 litres",
+        "price": 53000
+      },
+      {
+        "id": "tray",
+        "label": "Tray",
+        "price": 70000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "tomato-seafood-pasta-bulk",
+    "name": "Tomato Seafood Pasta (Bulk)",
+    "tone": "gold",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "500ml",
+        "label": "500ml",
+        "price": 10000
+      },
+      {
+        "id": "1000ml",
+        "label": "1000ml",
+        "price": 18000
+      },
+      {
+        "id": "3-5l",
+        "label": "3.5 litres",
+        "price": 53000
+      },
+      {
+        "id": "tray",
+        "label": "Tray",
+        "price": 70000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "spaghetti-meatballs-bulk",
+    "name": "Spaghetti & Meatballs (Bulk)",
+    "tone": "cream",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "500ml",
+        "label": "500ml",
+        "price": 10000
+      },
+      {
+        "id": "1000ml",
+        "label": "1000ml",
+        "price": 18000
+      },
+      {
+        "id": "3-5l",
+        "label": "3.5 litres",
+        "price": 53000
+      },
+      {
+        "id": "tray",
+        "label": "Tray",
+        "price": 70000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "creamy-chicken-pasta",
+    "name": "Creamy Chicken Pasta",
+    "tone": "cream",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "box",
+        "label": "Box (serves 1)",
+        "price": 9000
+      },
+      {
+        "id": "bowl",
+        "label": "Bowl (serves 2)",
+        "price": 17000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "creamy-seafood-pasta",
+    "name": "Creamy Seafood Pasta",
+    "tone": "deep",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "box",
+        "label": "Box (serves 1)",
+        "price": 9000
+      },
+      {
+        "id": "bowl",
+        "label": "Bowl (serves 2)",
+        "price": 17000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "tomato-chicken-pasta",
+    "name": "Tomato Chicken Pasta",
+    "tone": "green",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "box",
+        "label": "Box (serves 1)",
+        "price": 9000
+      },
+      {
+        "id": "bowl",
+        "label": "Bowl (serves 2)",
+        "price": 17000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "tomato-seafood-pasta",
+    "name": "Tomato Seafood Pasta",
+    "tone": "gold",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "box",
+        "label": "Box (serves 1)",
+        "price": 9000
+      },
+      {
+        "id": "bowl",
+        "label": "Bowl (serves 2)",
+        "price": 17000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "spicy-chicken-sausage-spaghetti",
+    "name": "Spicy Chicken Sausage Spaghetti",
+    "tone": "deep",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "box",
+        "label": "Box (serves 1)",
+        "price": 7500
+      },
+      {
+        "id": "bowl",
+        "label": "Bowl (serves 2)",
+        "price": 15000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "spicy-spaghetti-meatballs",
+    "name": "Spicy Spaghetti & Meatballs",
+    "tone": "cream",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "box",
+        "label": "Box (serves 1)",
+        "price": 9000
+      },
+      {
+        "id": "bowl",
+        "label": "Bowl (serves 2)",
+        "price": 17000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "grilled-chicken-salad",
+    "name": "Grilled Chicken Salad",
+    "tone": "green",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "bowl",
+        "label": "Bowl",
+        "price": 8500
+      },
+      {
+        "id": "medium-tray",
+        "label": "Medium tray",
+        "price": 35000
+      },
+      {
+        "id": "large-tray",
+        "label": "Large tray",
+        "price": 45000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "grilled-mackerel-fish-salad",
+    "name": "Grilled Mackerel Fish Salad",
+    "tone": "cream",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "bowl",
+        "label": "Bowl",
+        "price": 9000
+      },
+      {
+        "id": "medium-tray",
+        "label": "Medium tray",
+        "price": 35500
+      },
+      {
+        "id": "large-tray",
+        "label": "Large tray",
+        "price": 45500
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "spicy-shrimp-salad",
+    "name": "Spicy Shrimp Salad",
+    "tone": "gold",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "bowl",
+        "label": "Bowl",
+        "price": 9000
+      },
+      {
+        "id": "medium-tray",
+        "label": "Medium tray",
+        "price": 35500
+      },
+      {
+        "id": "large-tray",
+        "label": "Large tray",
+        "price": 45500
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "hh-platter",
+    "name": "HH Platter",
+    "tone": "deep",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "half-tray",
+        "label": "Half tray",
+        "price": 65000
+      },
+      {
+        "id": "full-tray",
+        "label": "Full tray",
+        "price": 120000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "black-pack",
+    "name": "Black Pack",
+    "tone": "gold",
+    "minQty": 20,
+    "unitNoun": "packs",
+    "portions": [
+      {
+        "id": "1-protein",
+        "label": "1 protein",
+        "price": 5500
+      },
+      {
+        "id": "2-protein",
+        "label": "2 proteins",
+        "price": 7500
+      },
+      {
+        "id": "3-protein",
+        "label": "3 proteins",
+        "price": 10000
+      }
+    ],
+    "options": [
+      {
+        "id": "base",
+        "label": "Rice or spaghetti",
+        "choices": [
+          {
+            "id": "jollof",
+            "label": "Jollof rice",
+            "price": 0
+          },
+          {
+            "id": "spaghetti",
+            "label": "Spaghetti",
+            "price": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "breakfast-box",
+    "name": "Breakfast Box",
+    "tone": "cream",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "box",
+        "label": "Per box",
+        "price": 10000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "box-a",
+    "name": "Box A",
+    "tone": "green",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "box",
+        "label": "Per box",
+        "price": 15000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "box-b",
+    "name": "Box B",
+    "tone": "deep",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "box",
+        "label": "Per box",
+        "price": 20000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "box-c",
+    "name": "Box C",
+    "tone": "gold",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "box",
+        "label": "Per box",
+        "price": 35000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "box-d",
+    "name": "Box D",
+    "tone": "deep",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "box",
+        "label": "Per box",
+        "price": 45000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "bottled-water",
+    "name": "Water",
+    "tone": "cream",
+    "minQty": 1,
+    "unitNoun": "portions",
     "portions": [
       {
         "id": "bottle",
-        "label": "50cl bottle",
-        "price": 1500
+        "label": "Per bottle",
+        "price": 300
       }
     ],
     "options": []
   },
   {
-    "slug": "asun",
-    "name": "Asun",
+    "slug": "pet-coke",
+    "name": "Pet Coke",
     "tone": "deep",
+    "minQty": 1,
+    "unitNoun": "portions",
     "portions": [
       {
-        "id": "portion",
-        "label": "Single portion",
-        "price": 7500
+        "id": "bottle",
+        "label": "Per bottle",
+        "price": 600
       }
     ],
     "options": []
   },
   {
-    "slug": "weekend-special",
-    "name": "Weekend Special",
-    "tone": "cream",
+    "slug": "canned-drink",
+    "name": "Canned Drink",
+    "tone": "gold",
+    "minQty": 1,
+    "unitNoun": "portions",
     "portions": [
       {
-        "id": "single",
-        "label": "Single portion",
-        "price": 6500
+        "id": "can",
+        "label": "Per can",
+        "price": 1000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "non-alcoholic-wine",
+    "name": "Non-Alcoholic Wine (Small)",
+    "tone": "green",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "small",
+        "label": "Small bottle",
+        "price": 4000
+      }
+    ],
+    "options": []
+  },
+  {
+    "slug": "carrier-bag",
+    "name": "Carrier Bag",
+    "tone": "cream",
+    "minQty": 1,
+    "unitNoun": "portions",
+    "portions": [
+      {
+        "id": "bag",
+        "label": "Per bag",
+        "price": 700
       }
     ],
     "options": []

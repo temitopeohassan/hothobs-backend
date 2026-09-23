@@ -9,9 +9,12 @@
  *  ₦50,000 order, which matters now that checkout takes real money
  *  through Paystack.
  *
- *  catalogue.data.json mirrors hothobs-frontend/src/data/menu.js. Both
- *  are still the placeholder menu — when the real Hothobs menu lands,
- *  regenerate this file from the frontend data with:
+ *  catalogue.data.json mirrors hothobs-frontend/src/data/menu.js. It also
+ *  carries each product's `minQty`, the order minimum Hothobs prints —
+ *  twenty people for a breakfast spread, twenty packs for a Black Pack.
+ *  The browser applies the same floor, but the browser can be edited, so
+ *  priceLine is where it actually holds. Regenerate after any menu change
+ *  with:
  *
  *    node --input-type=module -e "…"   (see README, 'Regenerating prices')
  *
@@ -34,12 +37,28 @@ export const findProduct = (slug) => bySlug.get(slug) ?? null
  * out falls back to its first choice, which is what the quick-add button
  * on a product card means by "no choices made".
  *
- * Returns the priced line, or a { error } describing what did not resolve.
+ * Returns the priced line, or a { error } describing what did not resolve,
+ * optionally with `advice` telling the customer how to put it right.
  * Never returns a price derived from anything the client sent.
  */
 export function priceLine({ slug, portionId, options, qty }) {
   const product = findProduct(slug)
   if (!product) return { error: 'is no longer on the menu' }
+
+  // The order minimum is Hothobs' own, printed on the menu. Checking it
+  // here rather than only in the browser is the difference between a rule
+  // and a suggestion.
+  const minQty = product.minQty ?? 1
+  if (minQty > 1 && qty < minQty) {
+    const noun = product.unitNoun ?? 'portions'
+    return {
+      error: `has a minimum order of ${minQty} ${noun}`,
+      // Removing the item is the wrong advice here — the order is fine, the
+      // quantity is simply short. Callers fall back to their own wording
+      // when an error carries no advice of its own.
+      advice: `Please raise ${product.name} to at least ${minQty} ${noun} and try again.`,
+    }
+  }
 
   const portion =
     product.portions.find((p) => p.id === portionId) ??

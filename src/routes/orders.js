@@ -164,10 +164,14 @@ router.post(
     // never what it costs — see src/lib/catalogue.js.
     const items = rawItems.map((item, index) => {
       const qty = Number(item?.qty)
-      if (!Number.isInteger(qty) || qty < 1 || qty > 99) {
+      // Ceiling is high because these are bulk menus: a breakfast spread is
+      // counted in people and a Black Pack in packs, so three figures is an
+      // ordinary order, not a suspicious one. The per-product floor is
+      // checked in priceLine, against the minimum Hothobs prints.
+      if (!Number.isInteger(qty) || qty < 1 || qty > 2000) {
         throw badRequest(`Item ${index + 1} has an invalid quantity.`)
       }
-      const { line, error } = priceLine({
+      const { line, error, advice } = priceLine({
         slug: str(item?.slug),
         portionId: str(item?.portionId) || null,
         options:
@@ -176,7 +180,11 @@ router.post(
             : {},
         qty,
       })
-      if (error) throw badRequest(`One of your items ${error}. Please remove it and try again.`)
+      if (error) {
+        throw badRequest(
+          `One of your items ${error}. ${advice ?? 'Please remove it and try again.'}`
+        )
+      }
       return { ...line, notes: str(item?.notes).slice(0, 500) }
     })
 

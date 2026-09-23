@@ -107,7 +107,12 @@ zone is rejected at checkout with a note to call the kitchen.
 ### Regenerating prices
 
 `src/lib/catalogue.data.json` is the server's copy of the menu and the authority
-on what a customer is charged. The browser sends only ids — slug, portion id,
+on what a customer is charged. **Bulk portions are deliberately left out of it.**
+Anything Hothobs sells by the litre, the tray, the head or the pack carries
+`bulk: true` in the frontend menu and is quoted by the kitchen, never charged
+online — filtering it out here is what stops a crafted request from paying for
+a ₦120,000 tray through Paystack. `priceLine` then rejects it with "has a
+portion we do not recognise", which is the correct answer. The browser sends only ids — slug, portion id,
 option ids and quantity — and `src/lib/catalogue.js` prices the line. When the
 menu changes in `../hothobs-frontend/src/data/menu.js`, regenerate it:
 
@@ -116,12 +121,15 @@ node --input-type=module -e "
 import { pathToFileURL } from 'node:url'
 import fs from 'node:fs'
 const m = await import(pathToFileURL('../hothobs-frontend/src/data/menu.js').href)
-fs.writeFileSync('src/lib/catalogue.data.json', JSON.stringify(m.products.map(p => ({
-  slug: p.slug, name: p.name, tone: p.tone,
-  portions: p.portions.map(x => ({ id: x.id, label: x.label, price: x.price })),
-  options: p.options.map(o => ({ id: o.id, label: o.label,
-    choices: o.choices.map(c => ({ id: c.id, label: c.label, price: c.price })) })),
-})), null, 2) + '
+const out = m.products
+  .map(p => ({
+    slug: p.slug, name: p.name, tone: p.tone,
+    portions: p.portions.filter(x => !x.bulk).map(x => ({ id: x.id, label: x.label, price: x.price })),
+    options: p.options.map(o => ({ id: o.id, label: o.label,
+      choices: o.choices.map(c => ({ id: c.id, label: c.label, price: c.price })) })),
+  }))
+  .filter(p => p.portions.length > 0)
+fs.writeFileSync('src/lib/catalogue.data.json', JSON.stringify(out, null, 2) + '
 ')
 "
 ```
