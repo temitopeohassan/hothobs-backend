@@ -47,7 +47,7 @@ All paths are prefixed with `/api`.
 | Method | Path                | Auth     | Purpose |
 | ------ | ------------------- | -------- | ------- |
 | GET    | `/health`           | —        | Liveness check |
-| GET    | `/zones`            | —        | Delivery zones, their fees, and the payment methods |
+| GET    | `/zones`            | —        | Delivery zones and the payment methods |
 | POST   | `/auth/register`    | —        | Create an account, signs in |
 | POST   | `/auth/login`       | —        | Sign in |
 | POST   | `/auth/logout`      | —        | Clear the session cookie |
@@ -101,8 +101,9 @@ Configure `PAYSTACK_SECRET_KEY`, `PAYSTACK_CURRENCY` and `SITE_URL` — see
 `.env.example`. Without a secret key the checkout refuses orders rather than
 quietly accepting unpaid ones.
 
-Delivery outside Lagos has no fixed fee, so it cannot be paid for online; that
-zone is rejected at checkout with a note to call the kitchen.
+Delivery is never charged online. The customer pays the delivery charge on
+delivery, so Paystack is charged for the food alone and new orders store a
+null `delivery_fee`. Every zone, outside Lagos included, can be paid for.
 
 ### Regenerating prices
 
@@ -181,7 +182,7 @@ Doing it safely needs email verification first.
 
 ## Before launch
 
-- [ ] Replace the placeholder delivery zones and fees in `src/lib/fulfilment.js`.
+- [ ] Replace the placeholder delivery zones in `src/lib/fulfilment.js`.
 - [x] **Price order lines on the server.** Done — the browser sends ids and
       `src/lib/catalogue.js` prices every line. Required before taking money.
 - [ ] Move the catalogue into the database so it stops being a second copy of

@@ -88,7 +88,13 @@ export function buildOrderNotification(order, items) {
   const isPickup = order.fulfilment === 'pickup'
   const paidAt = order.paid_at ? `${order.paid_at} UTC` : 'just now'
   const channel = order.payment_channel || 'Paystack'
-  const delivery = order.delivery_fee == null ? 'to quote' : naira(order.delivery_fee)
+  // Orders placed since delivery moved to pay-on-delivery carry no fee.
+  const delivery =
+    order.delivery_fee != null
+      ? naira(order.delivery_fee)
+      : isPickup
+        ? 'none (pickup)'
+        : 'paid by customer on delivery'
   const paystackRef = order.payment_reference || order.reference
 
   const subject = `New paid order ${order.reference} — ${naira(order.total)} (${

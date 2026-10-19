@@ -1,15 +1,16 @@
 /**
- * Delivery zones live on the server so a customer cannot choose their own
- * delivery fee. The checkout page fetches this list from GET /api/zones.
+ * How an order reaches the customer. The checkout page fetches this list
+ * from GET /api/zones.
  *
- * TODO replace with Hothobs' confirmed delivery zones and fees.
- * A null fee means "we quote this one after we call".
+ * There are no fees here on purpose: delivery is paid by the customer on
+ * delivery, so it is never part of what Paystack charges. The
+ * zone is kept so the kitchen knows where the order is going.
  */
 export const zones = [
-  { id: 'pickup', label: 'Pickup from our kitchen', fee: 0 },
-  { id: 'mainland', label: 'Delivery — Mainland', fee: 3000 },
-  { id: 'island', label: 'Delivery — Island', fee: 4500 },
-  { id: 'outside', label: 'Delivery — outside Lagos', fee: null },
+  { id: 'pickup', label: 'Pickup from our kitchen' },
+  { id: 'mainland', label: 'Delivery — Mainland' },
+  { id: 'island', label: 'Delivery — Island' },
+  { id: 'outside', label: 'Delivery — outside Lagos' },
 ]
 
 export const findZone = (id) => zones.find((z) => z.id === id)

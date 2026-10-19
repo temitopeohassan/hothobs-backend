@@ -103,8 +103,8 @@ const shape = (order, items) => ({
 const withItems = (order) => shape(order, listItems.all(order.id))
 
 /**
- * What the checkout page is allowed to offer: the zones with the fees the
- * server will actually apply, and the payment methods — of which there is
+ * What the checkout page is allowed to offer: the delivery zones (no fees —
+ * delivery is paid on delivery) and the payment methods, of which there is
  * exactly one.
  */
 router.get('/zones', (_req, res) => res.json({ zones, paymentMethods }))
@@ -189,17 +189,11 @@ router.post(
     })
 
     const subtotal = items.reduce((n, i) => n + i.unitPrice * i.qty, 0)
-    const deliveryFee = zone.fee
-    const total = subtotal + (deliveryFee ?? 0)
-
-    // A zone we quote by hand has no price yet, so there is nothing to
-    // charge — Paystack cannot take an open-ended amount.
-    if (deliveryFee === null) {
-      throw badRequest(
-        'We quote delivery outside Lagos by hand, so this one cannot be paid for online yet. ' +
-          'Please call the kitchen and we will arrange it with you.'
-      )
-    }
+    // Delivery is paid by the customer on delivery, never through Paystack,
+    // so the charge is the food alone. delivery_fee stays null on new
+    // orders; older rows may still carry the fee they were charged.
+    const deliveryFee = null
+    const total = subtotal
     if (total < 100) {
       throw badRequest('This order is below the smallest amount Paystack can charge.')
     }

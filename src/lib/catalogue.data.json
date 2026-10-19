@@ -1,50 +1,5 @@
 [
   {
-    "slug": "nigerian-breakfast",
-    "name": "Nigerian Breakfast",
-    "tone": "gold",
-    "minQty": 20,
-    "unitNoun": "people",
-    "portions": [
-      {
-        "id": "per-head",
-        "label": "Per head",
-        "price": 10000
-      }
-    ],
-    "options": []
-  },
-  {
-    "slug": "continental-breakfast",
-    "name": "Continental Breakfast",
-    "tone": "cream",
-    "minQty": 20,
-    "unitNoun": "people",
-    "portions": [
-      {
-        "id": "per-head",
-        "label": "Per head",
-        "price": 15000
-      }
-    ],
-    "options": []
-  },
-  {
-    "slug": "mix-breakfast",
-    "name": "Mix Breakfast",
-    "tone": "green",
-    "minQty": 20,
-    "unitNoun": "people",
-    "portions": [
-      {
-        "id": "per-head",
-        "label": "Per head",
-        "price": 20000
-      }
-    ],
-    "options": []
-  },
-  {
     "slug": "jollof-rice",
     "name": "Jollof Rice",
     "tone": "gold",
